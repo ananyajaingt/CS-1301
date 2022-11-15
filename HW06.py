@@ -1,0 +1,164 @@
+def dinnerTime(meal,diningHalls):
+    optionsList = []
+    for i in diningHalls:
+        for x in diningHalls[i]:
+            if x == meal:
+                optionsList.append(i)
+
+    if len(optionsList) > 0:
+        return optionsList
+
+    else:
+        return "Eat at home!"
+
+
+def rateActor(skillScore, fanScore):
+    rateActor = {}
+    for i in skillScore:
+        for j in fanScore:
+            if j[0] == i[0]:
+                score = 0
+                if type(j[1]) in [float,int] and type(i[1]) in [float,int]:
+                    score = i[1]
+                    score += j[1]
+
+                elif type(j[1]) in [float,int] and type(i[1]) not in [float,int]:
+                    score = j[1]
+                    score += 3
+
+                elif type(j[1]) not in [float,int] and type(i[1]) in [float,int]:
+                    score = i[1]
+                    score += 3
+
+                elif type(j[1]) not in [float,int] and type(i[1]) not in [float,int]:\
+                    score = 6
+
+        rateActor[i[0]] = score
+
+    return rateActor
+
+skillScore = [('Tom Cruise',3),('Miles Teller',[5]),("Glen Powell",3),('Jennifer Connelley',{2:2})]
+
+fanScore = [('Tom Cruise',4),('Miles Teller',5),('Glen Powell',(2,)),('Jennifer Connelley',2)]
+
+print(rateActor(skillScore,fanScore))
+
+
+def theRealDeal(stockDict,goodStock):
+    earnings = 1
+    richList = []
+    for i in stockDict:
+        if i == goodStock:
+            earnings = stockDict[i][0]*stockDict[i][1]*stockDict[i][2]
+            richList.append(earnings)
+
+    if goodStock not in stockDict:
+        richList.append("You haven't invested in this one yet!")
+
+    newList = []
+    for x in stockDict:
+        earn = stockDict[x][0]*stockDict[x][1]*stockDict[x][2]
+        if earn >= 7000:
+            newList.append(x)
+
+    newList.sort()
+
+    for j in newList:
+        richList.append(j)
+
+    return richList
+
+"""stockDict = {"LIlY":(323.86,10,3.98),"ENPH":(277.47,50,-0.72),"NBIX":(106.21,100,2.62)}
+goodStock = "OXY"
+print(theRealDeal(stockDict,goodStock))"""
+
+"""def flightsInfo(flightsDict):
+    fixedflightsDict = flightsDict.copy()
+    for i in fixedflightsDict:
+
+        for j in fixedflightsDict[i]:
+            if j == "passengers":
+
+                for x in fixedflightsDict[i]["passengers"]:
+                    newPassengers = []
+                    if len(x) == 3:
+                        newPassengers.append(x)
+
+                    elif len(x) == 2:
+                        l1 = []
+                        l1.append(x[0])
+                        l1.append(x[1])
+                        if len(x[0]) in range(0, 6):
+                            l1.append("A")
+                        elif len(x[0]) == 6:
+                            l1.append("B")
+                        elif len(x[0]) >= 7:
+                            l1.append("Premium")
+
+                        newPassengers.append(tuple(l1))
+
+                        fixedflightsDict[i]["passengers"] = newPassengers
+
+    return fixedflightsDict
+
+
+
+
+
+
+
+
+flightsDict = {"flight1":{"time":"6:00am","weather":"windy","passengers":[("Farah","20A","Zone"),("Jane","4A"),("Naomi","3B"),("Fareeda","1B","Premium")]}, 'flight2':{"time": "3:00pm","weather":"sunny","passengers":[("Nelson","2C"),("Ramya","4A")]}}
+
+print(flightsInfo(flightsDict))"""
+
+def flightsInfo(flightsDict):
+    fixedflightsDict = flightsDict.copy()
+    for i in fixedflightsDict:
+        for j in fixedflightsDict[i]:
+            if j == "passengers":
+                newlist = []
+                for x in fixedflightsDict[i][j]:
+                    if len(x) == 3:
+                        newlist.append(x)
+
+                    elif len(x) == 2:
+                        l1 = []
+                        l1.append(x[0])
+                        l1.append(x[1])
+                        if len(x[0]) in range(0,6):
+                            l1.append("A")
+                        elif len(x[0]) == 6:
+                            l1.append("B")
+                        elif len(x[0]) >= 7:
+                            l1.append("Premium")
+
+                        newlist.append(tuple(l1))
+
+                fixedflightsDict[i][j] = newlist
+
+    return fixedflightsDict
+
+"""flightsDict = {"flight1":{"time":"6:00am","weather":"windy","passengers":[("Farah","20A","Zone"),("Jane","4A"),("Naomi","3B"),("Fareeda","1B","Premium")]}, 'flight2':{"time": "3:00pm","weather":"sunny","passengers":[("Nelson","2C"),("Ramya","4A")]}}
+
+print(flightsInfo(flightsDict))"""
+
+def fastFood(friendDict,menu):
+    friendsOwed = []
+    for i in friendDict:
+        cost = 0
+        for j in friendDict[i]:
+            for x in menu:
+                if x == j:
+                    cost += menu[x]
+
+        friendsOwed.append((i,cost))
+
+    friendsOwed.sort()
+
+    return friendsOwed
+
+"""friendDict = {"Chris":["coke","cookie"],"Andrew":["fries","burger"],"Naomi":["burger"]}
+menu = {"coke":1.0,"fries":3.0,"burger":10.0,"cookie":2.0}
+
+print(fastFood(friendDict,menu))"""
