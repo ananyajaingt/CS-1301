@@ -68,49 +68,7 @@ def theRealDeal(stockDict,goodStock):
 
     return richList
 
-"""stockDict = {"LIlY":(323.86,10,3.98),"ENPH":(277.47,50,-0.72),"NBIX":(106.21,100,2.62)}
-goodStock = "OXY"
-print(theRealDeal(stockDict,goodStock))"""
 
-"""def flightsInfo(flightsDict):
-    fixedflightsDict = flightsDict.copy()
-    for i in fixedflightsDict:
-
-        for j in fixedflightsDict[i]:
-            if j == "passengers":
-
-                for x in fixedflightsDict[i]["passengers"]:
-                    newPassengers = []
-                    if len(x) == 3:
-                        newPassengers.append(x)
-
-                    elif len(x) == 2:
-                        l1 = []
-                        l1.append(x[0])
-                        l1.append(x[1])
-                        if len(x[0]) in range(0, 6):
-                            l1.append("A")
-                        elif len(x[0]) == 6:
-                            l1.append("B")
-                        elif len(x[0]) >= 7:
-                            l1.append("Premium")
-
-                        newPassengers.append(tuple(l1))
-
-                        fixedflightsDict[i]["passengers"] = newPassengers
-
-    return fixedflightsDict
-
-
-
-
-
-
-
-
-flightsDict = {"flight1":{"time":"6:00am","weather":"windy","passengers":[("Farah","20A","Zone"),("Jane","4A"),("Naomi","3B"),("Fareeda","1B","Premium")]}, 'flight2':{"time": "3:00pm","weather":"sunny","passengers":[("Nelson","2C"),("Ramya","4A")]}}
-
-print(flightsInfo(flightsDict))"""
 
 def flightsInfo(flightsDict):
     fixedflightsDict = flightsDict.copy()
